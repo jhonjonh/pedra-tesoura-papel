@@ -1,0 +1,86 @@
+
+.content{
+    margin: 2vh auto;
+    padding-top:2vh;
+    padding-bottom: 2vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background-color: beige;
+    border: 3px dashed black;
+    border-radius: 10px;
+
+  }
+
+  .content1{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .content2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .score{
+    margin-top:.5em;
+    margin-left:2em;
+    font-size:1.5em
+  }
+  .fa {
+    cursor:pointer;
+    font-size:5em;
+  }
+
+  .imagens {
+    width: 10em;
+    cursor: pointer;
+  }
+  .imagens:hover{
+    -webkit-filter: drop-shadow(0px 0px 4px  rgb(98, 94, 94));
+    filter: drop-shadow(0px 0px 4px rgb(133, 125, 125));
+  }
+
+  #imagem1:target, #imagem2:target, #imagem3:target{
+    -webkit-filter: drop-shadow(0px 0px 20px  rgb(54, 146, 32));
+    filter: drop-shadow(0px 0px 20px rgb(32, 129, 29)) hue-rotate(90deg);
+  }
+
+  .tela-inicial, section {
+    background-color: rgb(245, 242, 229);
+    border: 3px dashed black;
+    border-radius: 10px;
+  }
+  ul li {
+    list-style: none;
+  }
+
+  html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url("./img/background.png");
+}
+
+.navbar {
+  background: linear-gradient(rgb(200, 129, 209), rgb(226, 235, 187));
+  box-shadow: 0px 2px 4px 1px grey;
+  margin-bottom: 4vh;
+  height: 5rem;
+}
+
+.navbar-brand {
+  color: rgb(9, 9, 65);
+  text-shadow: 0px 0px 2px rgb(153, 151, 151);
+  font-size: xx-large;
+}
+
+p{
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+ol, li, ul{
+    font-family: 'Chakra Petch', sans-serif;
+}
