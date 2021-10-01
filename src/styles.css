@@ -1,5 +1,7 @@
 /* Add application styles & imports to this file! */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap');
+
 
 html,
 body {
@@ -8,7 +10,8 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Chakra Petch', sans-serif !important;
+  font-size:120% !important;
   background-image: url("./assets/img/background.png");
 }
 
@@ -24,3 +27,5 @@ body {
   text-shadow: 0px 0px 2px rgb(153, 151, 151);
   font-size: xx-large;
 }
+
+
