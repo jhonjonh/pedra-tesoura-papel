@@ -16,6 +16,12 @@ export class TelasService {
 
   constructor() { }
 
+  /**
+   * Inicializa o jogo e define exibição da tela inicial
+   * 
+   * @return void;
+   */
+
   inicializar(): void {
     this._showInicio = true;
     this._showTabuleiro = false;
@@ -31,7 +37,7 @@ export class TelasService {
   }
 
   /**
-   * Retorna se o tabuleiro deve ser exibido.
+   * Retorna se o jogo deve ser exibido.
    * 
    * @return boolean
    */
@@ -40,7 +46,7 @@ export class TelasService {
   }
 
    /**
-   * Exibe o tabuleiro.
+   * Exibe o jogo.
    *
    * @return void
    */
