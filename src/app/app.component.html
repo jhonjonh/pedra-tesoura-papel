@@ -1,62 +1,83 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light border border-secondary rounded-bottom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        Pedra Tesoura Papel.
-      </a>
-    </div>
+<!-- Página Inicial -->
+<div class="container tela-inicial text-center card pb-4" *ngIf="showInicio">
+  <div class="card-header">
+    <img src="../assets/img/jo-ken-po.png" alt="">
   </div>
-</nav>
-  
-  <div class="content mb-4">
-    <!-- You -->
-    <mat-card>     
-        <mat-card-content>
-          <div class="content1">
-                  <h2>  Você</h2>
-                  <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
-          </div>
-  
-         <h3 > Escolha um dos três abaixo: </h3>
-         <div  class="content2">
-           <img (click)="pick(0)" class="imagens" src="../assets/img/rock.png" alt="">
-           <img (click)="pick(1)" class="imagens" src="../assets/img/paper.png" alt="">
-           <img (click)="pick(2)" class="imagens" src="../assets/img/scissors.png" alt="">
-           </div>         
-  
-        </mat-card-content>
-    </mat-card>
-  <!-- Player 2 -->
-    <mat-card>
-              <div class="content1">
-                  <h2>  Computador:</h2>
-                  <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
-  
-            </div>
-            <br><br>
-         
-        <div *ngIf="enemySelected !== -1"  class="flex-container flex-center" >
-          <img *ngIf="enemySelected == 0" class="imagens" src="../assets/img/rock.png" alt="">
-          <img *ngIf="enemySelected == 1" class="imagens" src="../assets/img/paper.png" alt="">
-          <img *ngIf="enemySelected == 2" class="imagens" src="../assets/img/scissors.png" alt="">           
-  
-           </div>
-    </mat-card>
-    
-  </div>
-  <div *ngIf="!loading && isResultShow" class="d-flex justify-content-center text-center" style="flex-direction: column">
-    <div [ngSwitch]="theResult">
-  <ng-template [ngSwitchCase]= "0"> <h1> Você ganhou! </h1></ng-template>
-  <ng-template [ngSwitchCase]= "1"> <h1> Você perdeu. </h1> </ng-template>
-  <ng-template [ngSwitchCase]= "2"> <h1>Empatou! </h1> </ng-template>
-  <ng-template ngSwitchDefault> </ng-template>
-</div> 
-    <p> Escolha outro para continuar ou </p>
-    <button  (click)="reset()" mat-raised-button  color="primary"> Resetar pontos</button>
+  <h1>Instruções:</h1>
+  <ul>
+    <li>Escolha pedra, tesoura ou papel.</li>
+    <li>Ao clicar em um, o computador também escolherá outro.</li>
+    <li>Compare os dois: Pedra quebra Tesoura, Tesoura corta Papel e Papel embrulha Pedra</li>
+    <li>O resultado aparecerá abaixo se ganhou, perdeu ou empatou.</li>
+  </ul>
+  <button class="btn btn-danger font-weight-bold" (click)="iniciarJogo()">Jogar</button>
 </div>
 
-<div class="flex-container flex-center" *ngIf="loading">
-<mat-spinner></mat-spinner>
+<!-- Tela do jogo  -->
+<div *ngIf="showTabuleiro">
+  <div class="content mb-4 row container card">
+    <!-- Player 1 -->
+    <div class="card">
+      <div class="card-body">
+        <div class="content1">
+          <h2 class="card-title"> Você</h2>
+          <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
+        </div>
+
+        <h3 class="my-2"> Escolha pedra, tesoura ou papel: </h3>
+        <div class="content2 mt-3">
+          <a href="#imagem1"><img (click)="pick(0)" id="imagem1" class="imagens img-fluid" src="../assets/img/pedra.png" alt=""></a>
+          <a href="#imagem2"><img (click)="pick(1)" id="imagem2" class="imagens img-fluid ml-2" src="../assets/img/papel.png" alt=""></a>
+          <a href="#imagem3"><img (click)="pick(2)" id="imagem3" class="imagens img-fluid pb-5" src="../assets/img/tesoura.png" alt=""></a>
+        </div>
+
+      </div>
+    </div>
+    <!-- Player 2 -->
+    <div class="card">
+      <div class="card-body">
+        <div class="content1">
+          <h2 class="card-title"> Computador:</h2>
+          <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
+
+        </div>
+        <br><br>
+
+        <div *ngIf="enemySelected !== -1" class="d-flex justify-content-center">
+          <img *ngIf="enemySelected == 0" class="imagens" src="../assets/img/pedra.png" alt="">
+          <img *ngIf="enemySelected == 1" class="imagens" src="../assets/img/papel.png" alt="">
+          <img *ngIf="enemySelected == 2" class="imagens" src="../assets/img/tesoura.png" alt="">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <section class="container py-2">
+    <div *ngIf="!loading && isResultShow" class="d-flex justify-content-center text-center"
+      style="flex-direction: column">
+      <div [ngSwitch]="theResult">
+        <ng-template [ngSwitchCase]="0">
+          <h1> Você ganhou! </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="1">
+          <h1> Você perdeu. </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="2">
+          <h1>Empatou! </h1>
+        </ng-template>
+        <ng-template ngSwitchDefault> </ng-template>
+      </div>
+      <p> Escolha outro para continuar ou </p>
+      <button (click)="reset()" mat-raised-button color="primary"> Resetar pontos</button>
+    </div>
+
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </section>
+
 </div>
-  

@@ -11,6 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { TelasService } from './telas.service';
+import { SelecionadoDirective } from './selecionado.directive';
 
 @NgModule({
   imports:      [ BrowserModule, 
@@ -21,7 +23,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   MatProgressSpinnerModule,
   MatButtonModule,
   MatCheckboxModule ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [ AppComponent, HelloComponent, SelecionadoDirective ],
+  bootstrap:    [ AppComponent ],
+  providers: [
+    TelasService
+  ]
 })
 export class AppModule { }

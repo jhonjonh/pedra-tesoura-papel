@@ -1,11 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TelasService } from './telas.service';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
+
+  constructor(private telaService: TelasService) {}
+
+  ngOnInit(){
+    this.telaService.inicializar();
+  }
+
+  get showInicio(): boolean{
+    return this.telaService.showInicio;
+  }
+
+  get showTabuleiro(): boolean {
+    return this.telaService.showTabuleiro;
+  }
+
+  iniciarJogo(): void {
+    this.telaService.iniciarJogo();
+  }
+
+
   scores = [0 , 0];
   weapons = [
     'rock',
@@ -28,7 +49,7 @@ export class AppComponent  {
    if(this.loading) return;
    this.loading = true;
    this.playerSelected = weapon;
-  
+
   //create a delay to simulate enemy's turn.
    setTimeout( () => {
      this.loading = false;
