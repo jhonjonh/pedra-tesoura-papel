@@ -100,10 +100,10 @@
       <div class="card-body">
         <div class="content1">
           <h2 class="card-title"> Você</h2>
-          <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
+          <button mat-fab color="primary" class="pontuacao">{{ pontuacao[0] }}</button>
         </div>
 
-        <h3 class="my-2"> Escolha pedra, tesoura ou papel </h3>
+        <h3 class="my-2"> Escolha pedra, papel ou tesoura </h3>
         <div class="content2 mt-3">
           <a href="#imagem1"><img (click)="pick(0)" id="imagem1" class="imagens img-fluid" src="../assets/img/pedra.png"
               alt=""></a>
@@ -120,15 +120,15 @@
       <div class="card-body">
         <div class="content1">
           <h2 class="card-title"> Computador</h2>
-          <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
+          <button mat-fab color="accent" class="pontuacao">{{ pontuacao[1] }}</button>
 
         </div>
         <br><br>
 
-        <div *ngIf="enemySelected !== -1" class="d-flex justify-content-center">
-          <img *ngIf="enemySelected == 0" class="imagens2" src="../assets/img/pedra.png" alt="">
-          <img *ngIf="enemySelected == 1" class="imagens2" src="../assets/img/papel.png" alt="">
-          <img *ngIf="enemySelected == 2" class="imagens2" src="../assets/img/tesoura.png" alt="">
+        <div *ngIf="computador !== -1" class="d-flex justify-content-center">
+          <img *ngIf="computador == 0" class="imagens2" src="../assets/img/pedra.png" alt="">
+          <img *ngIf="computador == 1" class="imagens2" src="../assets/img/papel.png" alt="">
+          <img *ngIf="computador == 2" class="imagens2" src="../assets/img/tesoura.png" alt="">
 
         </div>
 
