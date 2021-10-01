@@ -27,13 +27,13 @@ export class AppComponent implements OnInit {
   }
 
 
-  scores = [0 , 0];
-  weapons = [
-    'rock',
-    'paper',
-    'scissors'
+  pontuacao = [0 , 0];
+  personagens = [
+    'pedra',
+    'papel',
+    'tesoura'
   ]
-  playerSelected = -1;
+  player1 = -1;
   loading= false;
   isResultShow = false;
   
@@ -44,9 +44,9 @@ export class AppComponent implements OnInit {
    */
 
   theResult = 0 
-  enemySelected  = -1;
+  computador  = -1;
 
- pick( weapon: number): void {
+ pick( personagens: number): void {
    
   /**
    * Impede que o o usuário aperte o botão durante o carregamento da pagina
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 
    if(this.loading) return;
    this.loading = true;
-   this.playerSelected = weapon;
+   this.player1 = personagens;
 
    /**
     * Cria um tempo para simular o turno do oponente
@@ -64,22 +64,24 @@ export class AppComponent implements OnInit {
      this.loading = false;
      // gera um número entre 0 e 2 
      const randomNum =  Math.floor(Math.random() * 3 ) ;
-     this.enemySelected = randomNum;
+     this.computador = randomNum;
      this.checkResult();
      this.isResultShow = true;
    },  Math.floor(Math.random() * 500 ) +200);
  }
 
  reset(): void {
-  this.scores = [0,0];
+  this.pontuacao = [0,0];
  }
  checkResult(): void {
-   const playerPick = this.playerSelected;
-   const enemyPick = this.enemySelected;
+   const escolhaPlayer1
+    = this.player1;
+   const escolhaComputador = this.computador;
    /**
     * Se o computador escolher o mesmo personagem que o jogador, terá um empate
     */
-   if( playerPick ==  enemyPick)
+   if( escolhaPlayer1
+     ==  escolhaComputador)
     {
     this.theResult = 2;
   }
@@ -91,16 +93,16 @@ export class AppComponent implements OnInit {
    * O jogador perde porque ( 0 - 1 + 3 ) % 3 = 2
    */
   
-    else if ( (playerPick - enemyPick + 3)% 3 == 1)    {
+    else if ( (escolhaPlayer1
+       - escolhaComputador + 3)% 3 == 1)    {
       // O jogador ganha
       this.theResult = 0;
-      this.scores[0] = this.scores[0]+1;
+      this.pontuacao[0] = this.pontuacao[0]+1;
     }
     else{
       // O joador perde
       this.theResult = 1;
-        this.scores[1] = this.scores[1]+1;
+        this.pontuacao[1] = this.pontuacao[1]+1;
     }
  }
 }
-
