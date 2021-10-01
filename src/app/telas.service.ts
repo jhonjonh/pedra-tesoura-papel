@@ -1,3 +1,11 @@
+/**
+ * author: Camila Chang
+ * author: John Gerber
+ * author: Roberta Moura
+ * author: Yasmine Pallin
+ * since: 1.0
+ */
+
 import { Injectable } from '@angular/core';
 
 @Injectable()
